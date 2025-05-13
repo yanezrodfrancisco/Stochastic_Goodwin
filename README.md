@@ -11,7 +11,7 @@ The use of the scripts and its content is described as follow:
 The SDEs (Stochastic Differential Equations) are defined as:
 
 $$
-\frac{dx}{dt} = f(x) + \xi\,g(x)
+\frac{dx}{dt} = f(x) + \xi g(x) ~ \left(\xi = N(0, 1)\right)
 $$
 
 
