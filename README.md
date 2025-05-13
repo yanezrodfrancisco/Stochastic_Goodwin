@@ -22,4 +22,4 @@ The parameters in the `config.json` are those required for the simulation. **To 
 
 The `stochastic_simulation.py` is only the program used to realize the simulation and extract a graphic analogous Figure 3 of our paper. For the parameters set in our example of `config.json`, with no noise, the results should are these:
 
-![Test Image 3](/3DTest.png)
+![Test Image 3](/Figure_3.png)
