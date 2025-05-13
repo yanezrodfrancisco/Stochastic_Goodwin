@@ -1,0 +1,6 @@
+{
+    "initial_conditions": {"u": 1.5, "v": 0.8, "p": 1.5, "n": 2.0},
+    "parameters": {"rho": 1.0, "gamma": 1.0, "kappa": 1.0, "lamda": 1.0, "alpha": 1e-2, "sigma": 1.5, "delta": 1.0, "mu": 2.0, "bu": 1.0, "bv": 1.0},
+    "noise_parameters": {"d": 0.0, "g": 0.0, "noise_frec": 100},
+    "numerical_integration_parameters": {"steps":1e4, "delta_t": 5e-4, "sampling_interval": 50}
+}
