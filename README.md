@@ -1,5 +1,5 @@
 # Stochastic_Goodwin
-In this repository we can found the codes and scripts necessary to reproduce the results obtained in our paper <NAME_NECESARRY>
+In this repository we can found the codes and scripts necessary to reproduce the results obtained in our paper "Stochastic transitions in a Goodwin model generalization"
 
 The use of the scripts and its content is described as follow:
 
