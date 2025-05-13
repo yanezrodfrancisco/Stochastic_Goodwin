@@ -16,5 +16,5 @@ $$
 
 If $g(x) = 0$, there is not an stochastich term in the equation, if $g(x) = cte$ there is denomitaed additive noise, in any other scenario, the noise is considered multiplicative.
 
-Functions in `noise_library.py` written that start with an `f` (`fu`, `fv`, `fp` and `fn`) are the deterministic functions derived form the Goodwin model without noise (ignoring the constant $d$). `gu` and `gv` are the multiplicative noise functions for `u` and `v` respectively. The remaining functions are the `HeunPred` function, an intern function that calculates the predictor for the Heun method; and the `Heun_solution` function, that calculates the solution for the giving conitions in the system.  
+Functions in `noise_library.py` written that start with an `f` (`fu`, `fv`, `fp` and `fn`) are the deterministic functions derived form the Goodwin model without noise (ignoring the constant $d$). Functions `gu` and `gv` are the multiplicative noise functions for `u` and `v` respectively. The remaining functions are the `HeunPred` function, an intern function that calculates the predictor for the Heun method; and the `Heun_solution` function, that calculates the solution for the giving conitions in the system.  
 
