@@ -9,4 +9,4 @@ The use of the scripts and its content is described as follow:
 * `stochastic_simulation.py`: Principal programm of the repository. Uses the functions defined in the library, saves the data and create Figures to analize the data obtained
 
 The SDEs (Stochastical Differential equations are defined as):  
-This sentence uses $\frac{dx}{dt} = f(x) + \xi g(x)$
+$\frac{dx}{dt} = f(x) + \xi g(x)$
