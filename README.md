@@ -20,6 +20,6 @@ Functions in `noise_library.py` written that start with an `f` (`fu`, `fv`, `fp`
 
 The parameters in the `config.json` are those required for the simulation. **To replicate our results, this is the only file the user should modify**. `initial_conditions` and `parameters` are self-explenatory, are those initial values and parameters defined for our system. In the `noise_parameters`, `noise_frec` is the number of time integration steps where the random value of the noise is constant. The `sampling_interval` is the number of intermedia steps used to calculate a new step. It is important to afford memory nad agilize teh representations of the results. It is expressed also in numerical time steps. For numerical restrictions, the `noise_frec` must be bigger than the `sampling_interval`; and obviously these must be very small compared to the total `steps` in the simulations. `delta_t` is also self-explenatoy, it is the time discrezitation used in the numerical simulation.  
 
-The `stochastic_simulation.py` is only the program used to realize the simulation and extract a graphic analogous Figure 3 of our paper. For the parameters set in our example of `config.json`, with no noise, the results should are these:
+The `stochastic_simulation.py` is only the program used to realize the simulation and extract a graphic analogous Figure 3 of our paper. For the parameters set in our example of `config.json`, without noise, the results should are these:
 
 ![Test Image 3](/Figure_3.png)
