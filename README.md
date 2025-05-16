@@ -14,7 +14,7 @@ $$
 \frac{dx}{dt} = f(x) + \xi g(x) ~ \left(\xi = N(0, 1)\right)
 $$
 
-If $g(x) = 0$, there is not an stochastich term in the equation, if $g(x) = cte$ there is denomitaed additive noise, in any other scenario, the noise is considered multiplicative.
+If $g(x) = 0$, there is not an stochastic term in the equation; if $g(x) = cte$, it is denomitaed additive noise; in any other scenario, the noise is considered multiplicative.
 
 Functions in `noise_library.py` written that start with an `f` (`fu`, `fv`, `fp` and `fn`) are the deterministic functions $f(x)$ derived form the Goodwin model without noise (ignoring the constant $d$). Functions `gu` and `gv` are the multiplicative noise functions $g(x)$ for `u` and `v` respectively. The remaining functions are the `HeunPred` function, an intern function that calculates the predictor for the Heun method; and the `Heun_solution` function, that calculates the solution for the configuration defined in the `config.json`.
 
