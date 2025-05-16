@@ -19,12 +19,12 @@ params= list(config["parameters"].values())
 x_0 = tuple(config["initial_conditions"].values())
 params.append(config["noise_parameters"]["d"])
 sg1 = config["noise_parameters"]["g"]
-frec_ruido = config["noise_parameters"]["noise_frec"]
+noise_frec = config["noise_parameters"]["noise_frec"]
 T, dt, mid_step= tuple(config["numerical_integration_parameters"].values())
 
 #Execution of the simulations
-_ = my.Heun_solution(2, dt, var=x_0, params=params, sg1=sg1, pasos=frec_ruido, mid_step=mid_step)
-U, V, P, NoiseP= my.Heun_solution(int(T), dt, var=x_0, params=params, sg1=sg1, pasos=frec_ruido,  mid_step=mid_step)
+_ = my.Heun_solution(2, dt, var=x_0, params=params, sg1=sg1, noise_frec=noise_frec, mid_step=mid_step)
+U, V, P, NoiseP= my.Heun_solution(int(T), dt, var=x_0, params=params, sg1=sg1, noise_frec=noise:frec,  mid_step=mid_step)
 t=np.linspace(0, T*mid_step*dt, len(P))
 
 #Representation of the results
