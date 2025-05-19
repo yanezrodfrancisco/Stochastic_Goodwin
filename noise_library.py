@@ -5,39 +5,37 @@ import numba
 @numba.jit(nopython=True)
 def fp(x, params):
    u, v, p, n= x
-   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
-   return p*alpha*(1-p/sigma) + delta
+   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
+   return p*alpha*(1-p/sigma) + d
 
 @numba.jit(nopython=True)
 def fn(x, params):
    u, v, p, n= x
-   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
+   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
    return n*delta*(1-n/mu)
 
 @numba.jit(nopython=True)
 def fu(x, params):
    u, v, p, n= x
-   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
-   return (u-bu/p)*(rho*v-gamma)-u*alpha*(1-p/sigma) - delta*u/p 
+   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
+   return (u-bu/p)*(rho*v-gamma)-u*alpha*(1-p/sigma) - d*u/p 
 
 @numba.jit(nopython=True)
 def fv(x, params):
    u, v, p, n= x
-   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
-   return (v-bv/(n*p))*(1-lamda*u)/kappa-v*alpha*(1-p/sigma) - delta*v/p 
+   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
+   return (v-bv/(n*p))*(1-lamda*u)/kappa-v*alpha*(1-p/sigma)-v*delta*(1-n/mu) - d*v/p 
 
 @numba.jit(nopython=True)
 def gu(x, params):
    u, v, p, n= x
-   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
-   #return bu/p*(rho*v-gamma)
+   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
    return -u/p
 
 @numba.jit(nopython=True)
 def gv(x, params):
    u, v, p, n= x
-   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
-   #return bv*(1-lamda*u)/(n*p*kappa)
+   rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
    return -v/p
 
 
@@ -56,7 +54,7 @@ def HeunPred(f, g, x, sg, noise, dt, params):
 @numba.njit()
 def Heun_solution(T, dt, var, params, sg1, noise_frec, mid_step:int=100):
 
-     rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv= params
+     rho, gamma, kappa, lamda, alpha, sigma, delta, mu, bu, bv, d= params
      NoiseP=np.random.normal(0, 1, T)
 
      U=np.empty(T)
@@ -78,7 +76,7 @@ def Heun_solution(T, dt, var, params, sg1, noise_frec, mid_step:int=100):
          U[(i+1)//mid_step]=x_0[0]+0.5*dt*(predictor[0]+HeunPred(fu, gu,  x_0+dt*predictor, sg1, NoiseP[i//noise_frec], dt, params))
          V[(i+1)//mid_step]=x_0[1]+0.5*dt*(predictor[1]+HeunPred(fv, gv,  x_0+dt*predictor, sg1, NoiseP[i//noise_frec], dt, params))
          P[(i+1)//mid_step]=x_0[2]+0.5*dt*(predictor[2]+HeunPred(fp, one, x_0+dt*predictor, sg1, NoiseP[i//noise_frec], dt, params))
-         Noise[(i+1)//mid_step]=NoiseP[i//noise_frec]*sg1 + delta
+         Noise[(i+1)//mid_step]=NoiseP[i//noise_frec]*sg1 + d
 
 
      return U, V, P, Noise
