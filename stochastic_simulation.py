@@ -14,7 +14,7 @@ except FileNotFoundError:
     print(f"Error: Configuration file '{config_path}' not found.")
     sys.exit(1)
 
-#Extraction of the aprameters from the configuration file
+#Extraction of the parameters from the configuration file
 params= list(config["parameters"].values())
 x_0 = tuple(config["initial_conditions"].values())
 params.append(config["noise_parameters"]["d"])
